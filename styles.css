@@ -1,10 +1,6 @@
-/* ============================================================
-   WHIZZY — Khalid · Personal Portfolio
-   Editorial / refined. Warm off-black, bone text, muted gold.
-   ============================================================ */
+/* by Khalid Alblwi · WHIZZY */
 
 :root {
-  /* Palette */
   --bg:        #14110E;
   --bg-raise:  #1B1713;
   --bg-line:   #2A241D;
@@ -14,11 +10,9 @@
   --accent:    #C2A878;
   --accent-dim:#9C8763;
 
-  /* Type */
   --serif: "Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
   --sans:  "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
-  /* Rhythm */
   --container: 1180px;
   --gutter: clamp(1.25rem, 4vw, 4rem);
   --section-y: clamp(5rem, 11vw, 9.5rem);
@@ -26,7 +20,6 @@
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* ---------- Reset ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; }
 
@@ -45,8 +38,6 @@ body {
   letter-spacing: 0.005em;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  /* `clip` (not `hidden`) prevents horizontal scroll WITHOUT turning <body>
-     into a scroll container, which would otherwise break anchor/back-to-top scrolling. */
   overflow-x: clip;
 }
 
@@ -54,7 +45,6 @@ img, svg { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 ul, ol { list-style: none; padding: 0; }
 
-/* Subtle warm vignette so the off-black has depth */
 body::before {
   content: "";
   position: fixed;
@@ -67,7 +57,6 @@ body::before {
 }
 body > * { position: relative; z-index: 1; }
 
-/* ---------- Accessibility ---------- */
 .skip-link {
   position: absolute;
   inset-inline-start: 1rem;
@@ -88,7 +77,6 @@ body > * { position: relative; z-index: 1; }
   border-radius: 2px;
 }
 
-/* ---------- Layout ---------- */
 .container {
   width: 100%;
   max-width: var(--container);
@@ -98,7 +86,6 @@ body > * { position: relative; z-index: 1; }
 
 .section { padding-block: var(--section-y); }
 
-/* Asymmetric two-column grid: narrow label aside + wide body */
 .section-grid {
   display: grid;
   grid-template-columns: minmax(0, 0.28fr) minmax(0, 0.72fr);
@@ -125,12 +112,8 @@ body > * { position: relative; z-index: 1; }
   color: var(--text-soft);
 }
 
-/* Hairline divider between sections */
 .section + .section { border-top: 1px solid var(--bg-line); }
 
-/* ============================================================
-   HEADER
-   ============================================================ */
 .site-header {
   position: sticky;
   top: 0;
@@ -200,7 +183,6 @@ body > * { position: relative; z-index: 1; }
 }
 .nav-cta:hover { border-color: var(--accent); color: var(--accent) !important; }
 
-/* Language toggle */
 .lang-toggle {
   font-family: inherit;
   font-size: 0.82rem;
@@ -216,9 +198,6 @@ body > * { position: relative; z-index: 1; }
 }
 .lang-toggle:hover { border-color: var(--accent); color: var(--accent); }
 
-/* ============================================================
-   HERO
-   ============================================================ */
 .hero {
   position: relative;
   padding-top: clamp(4.5rem, 12vw, 9rem);
@@ -303,19 +282,6 @@ body > * { position: relative; z-index: 1; }
   text-transform: uppercase;
 }
 
-.hero-index {
-  position: absolute;
-  inset-inline-end: var(--gutter);
-  bottom: clamp(2rem, 6vw, 5rem);
-  font-family: var(--serif);
-  font-size: 0.85rem;
-  letter-spacing: 0.3em;
-  color: var(--text-mute);
-}
-
-/* ============================================================
-   ABOUT
-   ============================================================ */
 .about-body .lead {
   font-family: var(--serif);
   font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2rem);
@@ -327,9 +293,6 @@ body > * { position: relative; z-index: 1; }
 .about-body p + p { margin-top: 1.25rem; color: var(--text-soft); }
 .about-body p:not(.lead) { max-width: 60ch; }
 
-/* ============================================================
-   SKILLS
-   ============================================================ */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -358,9 +321,6 @@ body > * { position: relative; z-index: 1; }
 }
 .skill-group:hover .tag-list li { border-color: rgba(194,168,120,0.3); }
 
-/* ============================================================
-   SELECTED WORK
-   ============================================================ */
 .work-list { display: flex; flex-direction: column; }
 .work-item {
   display: grid;
@@ -414,9 +374,50 @@ body > * { position: relative; z-index: 1; }
   background: var(--accent-dim);
 }
 
-/* ============================================================
-   EDUCATION
-   ============================================================ */
+.work-github {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 1.35rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--text-soft);
+  transition: color 0.25s var(--ease);
+}
+.work-github .gh-mark {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  flex: none;
+}
+.work-github .gh-label { position: relative; }
+.work-github .gh-label::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.28s var(--ease);
+}
+.work-github .gh-arrow {
+  font-size: 0.95em;
+  transition: transform 0.25s var(--ease);
+}
+.work-github:hover,
+.work-github:focus-visible { color: var(--accent); }
+.work-github:hover .gh-label::after,
+.work-github:focus-visible .gh-label::after { transform: scaleX(1); }
+.work-github:hover .gh-arrow,
+.work-github:focus-visible .gh-arrow { transform: translate(2px, -2px); }
+
+[dir="rtl"] .work-github .gh-label::after { transform-origin: right; }
+[dir="rtl"] .work-github:hover .gh-arrow,
+[dir="rtl"] .work-github:focus-visible .gh-arrow { transform: translate(-2px, -2px); }
+
 .edu-card {
   display: flex;
   align-items: center;
@@ -456,9 +457,6 @@ body > * { position: relative; z-index: 1; }
   color: var(--text-mute);
 }
 
-/* ============================================================
-   CONTACT
-   ============================================================ */
 .contact-lede {
   font-family: var(--serif);
   font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2rem);
@@ -492,12 +490,7 @@ body > * { position: relative; z-index: 1; }
   word-break: break-word;
 }
 .contact-value:hover { color: var(--accent); }
-.contact-empty { color: var(--text-mute); font-style: italic; }
-.contact-empty:hover { color: var(--accent-dim); }
 
-/* ============================================================
-   FOOTER
-   ============================================================ */
 .site-footer {
   border-top: 1px solid var(--bg-line);
   padding-block: clamp(2.5rem, 6vw, 4rem);
@@ -518,10 +511,6 @@ body > * { position: relative; z-index: 1; }
 }
 .footer-totop:hover { color: var(--accent); }
 
-/* ============================================================
-   SCROLL REVEAL
-   ============================================================ */
-/* Reveals only hide when JS is active (html.js). No JS → content always visible. */
 .js .reveal {
   opacity: 0;
   transform: translateY(22px);
@@ -530,13 +519,9 @@ body > * { position: relative; z-index: 1; }
 }
 .js .reveal.is-visible { opacity: 1; transform: none; }
 
-/* Stagger items within a list */
 .work-item.reveal { transition-delay: var(--reveal-delay, 0ms); }
 .skill-group.reveal { transition-delay: var(--reveal-delay, 0ms); }
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
 @media (max-width: 880px) {
   .section-grid { grid-template-columns: 1fr; gap: 2rem; }
   .section-aside {
@@ -550,7 +535,7 @@ body > * { position: relative; z-index: 1; }
 
 @media (max-width: 620px) {
   .site-nav { gap: 1rem; }
-  .site-nav a:not(.nav-cta) { display: none; }   /* keep only Contact CTA on small screens */
+  .site-nav a:not(.nav-cta) { display: none; }
   .hero-heading { font-size: clamp(2.4rem, 12vw, 3.4rem); }
   .work-item { grid-template-columns: 1fr; gap: 0.5rem; }
   .work-num { padding-top: 0; }
@@ -559,16 +544,12 @@ body > * { position: relative; z-index: 1; }
   .contact-label { flex-basis: 100%; }
 }
 
-/* ============================================================
-   ARABIC TYPOGRAPHY  (applied when html[lang="ar"])
-   ============================================================ */
 [lang="ar"] body {
   font-family: "IBM Plex Sans Arabic", var(--sans);
-  letter-spacing: 0;            /* Arabic must never be letter-spaced (breaks glyph joining) */
-  line-height: 1.85;            /* a touch more leading for Arabic readability */
+  letter-spacing: 0;
+  line-height: 1.85;
 }
 
-/* Arabic body + headings use IBM Plex Sans Arabic (editorial, refined) */
 [lang="ar"] .hero-heading,
 [lang="ar"] .about-body .lead,
 [lang="ar"] .skill-group h3,
@@ -579,7 +560,6 @@ body > * { position: relative; z-index: 1; }
   letter-spacing: 0;
 }
 
-/* Arabic script needs more vertical breathing room than the tight Latin display sizes */
 [lang="ar"] .hero-heading { line-height: 1.3; }
 [lang="ar"] .skill-group h3 { line-height: 1.4; }
 [lang="ar"] .work-title,
@@ -587,7 +567,6 @@ body > * { position: relative; z-index: 1; }
 [lang="ar"] .contact-lede,
 [lang="ar"] .edu-degree { line-height: 1.5; }
 
-/* Latin tricks that don't translate: no uppercasing, no wide tracking on Arabic */
 [lang="ar"] .section-kicker,
 [lang="ar"] .stat-label,
 [lang="ar"] .gpa-label,
@@ -598,35 +577,25 @@ body > * { position: relative; z-index: 1; }
   text-transform: none;
   letter-spacing: 0;
 }
-[lang="ar"] .wordmark-text { letter-spacing: 0.2em; } /* keep brand spacing, slightly tighter */
+[lang="ar"] .wordmark-text { letter-spacing: 0.2em; }
 
-/* Inline Latin / tech runs: keep the Latin grotesk, upright and isolated.
-   <bdi> already isolates bidi; this keeps the typeface distinct from Arabic. */
 bdi { unicode-bidi: isolate; }
 [lang="ar"] bdi {
   font-family: var(--sans);
   letter-spacing: 0.005em;
 }
-/* The big Latin display tokens (stat numbers, GPA, project titles) keep the serif */
 [lang="ar"] .stat-num bdi,
 [lang="ar"] .gpa-num bdi,
 [lang="ar"] .work-title bdi {
   font-family: var(--serif);
 }
 
-/* ============================================================
-   RTL LAYOUT ADJUSTMENTS
-   ============================================================ */
 [dir="rtl"] .work-item:hover {
   background: linear-gradient(270deg, rgba(194,168,120,0.04), transparent 70%);
 }
 [dir="rtl"] .site-nav a:not(.nav-cta)::after { transform-origin: right; }
-/* Keep LTR-only tokens (emails, phone, URLs) readable inside an RTL page */
 [dir="rtl"] .contact-value[dir="ltr"] { text-align: start; }
 
-/* ============================================================
-   REDUCED MOTION
-   ============================================================ */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .js .reveal, .reveal { opacity: 1; transform: none; transition: none; }

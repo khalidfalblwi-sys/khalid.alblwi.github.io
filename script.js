@@ -1,18 +1,9 @@
-/* ============================================================
-   WHIZZY — portfolio interactions
-   - Scroll reveal (IntersectionObserver)
-   - Header state on scroll
-   - Footer year
-   - Resilient smooth-anchor scrolling (focus management for a11y)
-   ============================================================ */
+/* by Khalid Alblwi · WHIZZY */
 (function () {
   "use strict";
 
   var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ---------- Bilingual (EN / AR) ---------- */
-  // Each translatable element carries data-en / data-ar. Default markup is
-  // English, so the page is fully readable even if this script never runs.
   var LANG_KEY = "whizzy-lang";
   var TITLES = {
     en: "WHIZZY — Khalid · Software & Game Engine Developer (UE5 / C++)",
@@ -54,11 +45,9 @@
     });
   }
 
-  /* ---------- Footer year ---------- */
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  /* ---------- Header: add hairline once scrolled ---------- */
   var header = document.querySelector(".site-header");
   if (header) {
     var onScroll = function () {
@@ -69,10 +58,8 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
-  /* ---------- Scroll reveal ---------- */
   var reveals = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
 
-  // Stagger grouped items (work + skills) for an editorial cascade.
   function stagger(selector) {
     var items = document.querySelectorAll(selector);
     Array.prototype.forEach.call(items, function (el, i) {
@@ -100,8 +87,6 @@
 
     reveals.forEach(function (el) { io.observe(el); });
 
-    // Failsafe 1: immediately reveal anything already in the viewport, so
-    // above-the-fold content is never left hidden if the observer is slow.
     var revealInView = function () {
       var vh = window.innerHeight || document.documentElement.clientHeight;
       reveals.forEach(function (el) {
@@ -112,14 +97,9 @@
     revealInView();
     window.addEventListener("load", revealInView);
 
-    // Failsafe 2: never let content stay hidden — reveal everything after a
-    // short grace period regardless of observer behaviour.
     window.setTimeout(revealAll, 2500);
   }
 
-  /* ---------- Smooth anchor scrolling + a11y focus ---------- */
-  // Native CSS smooth-scroll handles motion; this adds focus handoff so
-  // keyboard/screen-reader users land on the target section.
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {
     link.addEventListener("click", function (e) {
       var id = link.getAttribute("href");
@@ -128,8 +108,6 @@
       if (!target) return;
 
       e.preventDefault();
-      // "#top" points at the sticky header, which never leaves the viewport, so
-      // scrollIntoView is a no-op. Scroll the window to the very top instead.
       if (id === "#top") {
         window.scrollTo({ top: 0, behavior: prefersReduced ? "auto" : "smooth" });
       } else {
@@ -139,7 +117,6 @@
         });
       }
 
-      // Move focus without a second jump.
       var hadTabindex = target.hasAttribute("tabindex");
       if (!hadTabindex) target.setAttribute("tabindex", "-1");
       target.focus({ preventScroll: true });
@@ -150,7 +127,6 @@
         });
       }
 
-      // Update the URL hash without triggering another scroll.
       if (history.replaceState) history.replaceState(null, "", id);
     });
   });
