@@ -1,0 +1,637 @@
+/* ============================================================
+   WHIZZY — Khalid · Personal Portfolio
+   Editorial / refined. Warm off-black, bone text, muted gold.
+   ============================================================ */
+
+:root {
+  /* Palette */
+  --bg:        #14110E;
+  --bg-raise:  #1B1713;
+  --bg-line:   #2A241D;
+  --text:      #EFE9DF;
+  --text-soft: #B7AD9D;
+  --text-mute: #847A6B;
+  --accent:    #C2A878;
+  --accent-dim:#9C8763;
+
+  /* Type */
+  --serif: "Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --sans:  "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* Rhythm */
+  --container: 1180px;
+  --gutter: clamp(1.25rem, 4vw, 4rem);
+  --section-y: clamp(5rem, 11vw, 9.5rem);
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.6;
+  font-size: clamp(1rem, 0.95rem + 0.2vw, 1.0625rem);
+  letter-spacing: 0.005em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* `clip` (not `hidden`) prevents horizontal scroll WITHOUT turning <body>
+     into a scroll container, which would otherwise break anchor/back-to-top scrolling. */
+  overflow-x: clip;
+}
+
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; padding: 0; }
+
+/* Subtle warm vignette so the off-black has depth */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(120% 80% at 80% -10%, rgba(194,168,120,0.06), transparent 55%),
+    radial-gradient(90% 60% at 0% 110%, rgba(194,168,120,0.04), transparent 50%);
+}
+body > * { position: relative; z-index: 1; }
+
+/* ---------- Accessibility ---------- */
+.skip-link {
+  position: absolute;
+  inset-inline-start: 1rem;
+  top: -3rem;
+  background: var(--accent);
+  color: #14110E;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  z-index: 100;
+  transition: top 0.2s var(--ease);
+}
+.skip-link:focus { top: 1rem; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---------- Layout ---------- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section { padding-block: var(--section-y); }
+
+/* Asymmetric two-column grid: narrow label aside + wide body */
+.section-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.28fr) minmax(0, 0.72fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+
+.section-aside { position: sticky; top: 6.5rem; }
+
+.section-index {
+  display: block;
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  color: var(--accent-dim);
+  letter-spacing: 0.18em;
+  margin-bottom: 0.5rem;
+}
+.section-kicker {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--text-soft);
+}
+
+/* Hairline divider between sections */
+.section + .section { border-top: 1px solid var(--bg-line); }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(10px);
+  background: rgba(20, 17, 14, 0.72);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
+}
+.site-header.is-scrolled {
+  border-bottom-color: var(--bg-line);
+  background: rgba(20, 17, 14, 0.9);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 1.15rem;
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--text);
+}
+.wordmark-mark { color: var(--accent); display: inline-flex; }
+.wordmark-text {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 1.02rem;
+  letter-spacing: 0.34em;
+  padding-left: 0.06em;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 2.2rem);
+}
+.site-nav a {
+  font-size: 0.9rem;
+  color: var(--text-soft);
+  letter-spacing: 0.02em;
+  transition: color 0.2s var(--ease);
+  position: relative;
+}
+.site-nav a:not(.nav-cta)::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -4px;
+  width: 100%; height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.28s var(--ease);
+}
+.site-nav a:not(.nav-cta):hover { color: var(--text); }
+.site-nav a:not(.nav-cta):hover::after { transform: scaleX(1); }
+
+.nav-cta {
+  border: 1px solid var(--bg-line);
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  color: var(--text) !important;
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease), background 0.2s var(--ease);
+}
+.nav-cta:hover { border-color: var(--accent); color: var(--accent) !important; }
+
+/* Language toggle */
+.lang-toggle {
+  font-family: inherit;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  color: var(--text-soft);
+  background: transparent;
+  border: 1px solid var(--bg-line);
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  cursor: pointer;
+  line-height: 1;
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+.lang-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  position: relative;
+  padding-top: clamp(4.5rem, 12vw, 9rem);
+  padding-bottom: clamp(4rem, 10vw, 8rem);
+}
+.hero-eyebrow {
+  font-size: 0.84rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+.hero-heading {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 8.5vw, 6.2rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  max-width: 16ch;
+  margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
+}
+.hero-heading em {
+  font-style: italic;
+  color: var(--accent);
+}
+.hero-lede {
+  font-size: clamp(1.05rem, 1rem + 0.4vw, 1.3rem);
+  line-height: 1.65;
+  color: var(--text-soft);
+  max-width: 56ch;
+  margin-bottom: clamp(2rem, 4vw, 2.75rem);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-bottom: clamp(3rem, 7vw, 5rem);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  transition: transform 0.25s var(--ease), background 0.25s var(--ease),
+              color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+.btn-primary {
+  background: var(--accent);
+  color: #14110E;
+}
+.btn-primary:hover { background: #D4BC8E; transform: translateY(-2px); }
+.btn-ghost {
+  border: 1px solid var(--bg-line);
+  color: var(--text);
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(2rem, 6vw, 4.5rem);
+  padding-top: clamp(1.5rem, 4vw, 2.5rem);
+  border-top: 1px solid var(--bg-line);
+}
+.hero-stats li { display: flex; flex-direction: column; gap: 0.3rem; }
+.stat-num {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2.1rem);
+  line-height: 1;
+  color: var(--text);
+}
+.stat-label {
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  color: var(--text-mute);
+  text-transform: uppercase;
+}
+
+.hero-index {
+  position: absolute;
+  inset-inline-end: var(--gutter);
+  bottom: clamp(2rem, 6vw, 5rem);
+  font-family: var(--serif);
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  color: var(--text-mute);
+}
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.about-body .lead {
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2rem);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 1.75rem;
+}
+.about-body p + p { margin-top: 1.25rem; color: var(--text-soft); }
+.about-body p:not(.lead) { max-width: 60ch; }
+
+/* ============================================================
+   SKILLS
+   ============================================================ */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+.skill-group {
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--bg-line);
+}
+.skill-group h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.3rem;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.01em;
+}
+.tag-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tag-list li {
+  font-size: 0.875rem;
+  color: var(--text-soft);
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--bg-line);
+  border-radius: 999px;
+  background: var(--bg-raise);
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+.skill-group:hover .tag-list li { border-color: rgba(194,168,120,0.3); }
+
+/* ============================================================
+   SELECTED WORK
+   ============================================================ */
+.work-list { display: flex; flex-direction: column; }
+.work-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  padding-block: clamp(1.75rem, 4vw, 2.75rem);
+  border-top: 1px solid var(--bg-line);
+  transition: background 0.3s var(--ease);
+}
+.work-list .work-item:last-child { border-bottom: 1px solid var(--bg-line); }
+.work-item:hover { background: linear-gradient(90deg, rgba(194,168,120,0.04), transparent 70%); }
+
+.work-num {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  color: var(--accent-dim);
+  letter-spacing: 0.1em;
+  padding-top: 0.45rem;
+}
+.work-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.85rem;
+  transition: color 0.25s var(--ease);
+}
+.work-item:hover .work-title { color: var(--accent); }
+.work-desc {
+  color: var(--text-soft);
+  max-width: 58ch;
+  margin-bottom: 1.1rem;
+}
+.work-tags { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; }
+.work-tags li {
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  position: relative;
+  padding-inline-start: 0.95rem;
+}
+.work-tags li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0; top: 50%;
+  width: 4px; height: 4px;
+  margin-top: -2px;
+  border-radius: 50%;
+  background: var(--accent-dim);
+}
+
+/* ============================================================
+   EDUCATION
+   ============================================================ */
+.edu-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem 2rem;
+  padding: clamp(1.75rem, 4vw, 2.5rem);
+  border: 1px solid var(--bg-line);
+  border-radius: 14px;
+  background: var(--bg-raise);
+}
+.edu-degree {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.3rem, 1.1rem + 0.9vw, 1.85rem);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.35rem;
+}
+.edu-school { color: var(--text-soft); }
+.edu-gpa { text-align: end; }
+.gpa-num {
+  display: block;
+  font-family: var(--serif);
+  font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+  line-height: 1;
+  color: var(--accent);
+}
+.gpa-den {
+  font-size: 0.45em;
+  color: var(--text-mute);
+  letter-spacing: 0.02em;
+}
+.gpa-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-mute);
+}
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact-lede {
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2rem);
+  line-height: 1.35;
+  color: var(--text);
+  max-width: 24ch;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+.contact-list { display: flex; flex-direction: column; }
+.contact-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  padding-block: 1.15rem;
+  border-top: 1px solid var(--bg-line);
+}
+.contact-list .contact-row:last-child { border-bottom: 1px solid var(--bg-line); }
+.contact-label {
+  flex: 0 0 7rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+}
+.contact-value {
+  font-family: var(--serif);
+  font-size: clamp(1.15rem, 1rem + 0.7vw, 1.6rem);
+  color: var(--text);
+  transition: color 0.2s var(--ease);
+  word-break: break-word;
+}
+.contact-value:hover { color: var(--accent); }
+.contact-empty { color: var(--text-mute); font-style: italic; }
+.contact-empty:hover { color: var(--accent-dim); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  border-top: 1px solid var(--bg-line);
+  padding-block: clamp(2.5rem, 6vw, 4rem);
+}
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem 2rem;
+}
+.footer-wordmark .wordmark-text { font-size: 0.95rem; }
+.footer-note { font-size: 0.85rem; color: var(--text-mute); }
+.footer-totop {
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  transition: color 0.2s var(--ease);
+}
+.footer-totop:hover { color: var(--accent); }
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+/* Reveals only hide when JS is active (html.js). No JS → content always visible. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  will-change: opacity, transform;
+}
+.js .reveal.is-visible { opacity: 1; transform: none; }
+
+/* Stagger items within a list */
+.work-item.reveal { transition-delay: var(--reveal-delay, 0ms); }
+.skill-group.reveal { transition-delay: var(--reveal-delay, 0ms); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 880px) {
+  .section-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .section-aside {
+    position: static;
+    display: flex;
+    align-items: baseline;
+    gap: 0.9rem;
+  }
+  .section-index { margin-bottom: 0; }
+}
+
+@media (max-width: 620px) {
+  .site-nav { gap: 1rem; }
+  .site-nav a:not(.nav-cta) { display: none; }   /* keep only Contact CTA on small screens */
+  .hero-heading { font-size: clamp(2.4rem, 12vw, 3.4rem); }
+  .work-item { grid-template-columns: 1fr; gap: 0.5rem; }
+  .work-num { padding-top: 0; }
+  .edu-card { flex-direction: column; align-items: flex-start; }
+  .edu-gpa { text-align: left; }
+  .contact-label { flex-basis: 100%; }
+}
+
+/* ============================================================
+   ARABIC TYPOGRAPHY  (applied when html[lang="ar"])
+   ============================================================ */
+[lang="ar"] body {
+  font-family: "IBM Plex Sans Arabic", var(--sans);
+  letter-spacing: 0;            /* Arabic must never be letter-spaced (breaks glyph joining) */
+  line-height: 1.85;            /* a touch more leading for Arabic readability */
+}
+
+/* Arabic body + headings use IBM Plex Sans Arabic (editorial, refined) */
+[lang="ar"] .hero-heading,
+[lang="ar"] .about-body .lead,
+[lang="ar"] .skill-group h3,
+[lang="ar"] .work-title,
+[lang="ar"] .edu-degree,
+[lang="ar"] .contact-lede {
+  font-family: "IBM Plex Sans Arabic", var(--sans);
+  letter-spacing: 0;
+}
+
+/* Arabic script needs more vertical breathing room than the tight Latin display sizes */
+[lang="ar"] .hero-heading { line-height: 1.3; }
+[lang="ar"] .skill-group h3 { line-height: 1.4; }
+[lang="ar"] .work-title,
+[lang="ar"] .about-body .lead,
+[lang="ar"] .contact-lede,
+[lang="ar"] .edu-degree { line-height: 1.5; }
+
+/* Latin tricks that don't translate: no uppercasing, no wide tracking on Arabic */
+[lang="ar"] .section-kicker,
+[lang="ar"] .stat-label,
+[lang="ar"] .gpa-label,
+[lang="ar"] .work-tags li,
+[lang="ar"] .contact-label,
+[lang="ar"] .site-nav a,
+[lang="ar"] .lang-toggle {
+  text-transform: none;
+  letter-spacing: 0;
+}
+[lang="ar"] .wordmark-text { letter-spacing: 0.2em; } /* keep brand spacing, slightly tighter */
+
+/* Inline Latin / tech runs: keep the Latin grotesk, upright and isolated.
+   <bdi> already isolates bidi; this keeps the typeface distinct from Arabic. */
+bdi { unicode-bidi: isolate; }
+[lang="ar"] bdi {
+  font-family: var(--sans);
+  letter-spacing: 0.005em;
+}
+/* The big Latin display tokens (stat numbers, GPA, project titles) keep the serif */
+[lang="ar"] .stat-num bdi,
+[lang="ar"] .gpa-num bdi,
+[lang="ar"] .work-title bdi {
+  font-family: var(--serif);
+}
+
+/* ============================================================
+   RTL LAYOUT ADJUSTMENTS
+   ============================================================ */
+[dir="rtl"] .work-item:hover {
+  background: linear-gradient(270deg, rgba(194,168,120,0.04), transparent 70%);
+}
+[dir="rtl"] .site-nav a:not(.nav-cta)::after { transform-origin: right; }
+/* Keep LTR-only tokens (emails, phone, URLs) readable inside an RTL page */
+[dir="rtl"] .contact-value[dir="ltr"] { text-align: start; }
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal, .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary Meta -->
+  <title>WHIZZY — خالد · مطوّر برمجيات · مطوّر محرّكات ألعاب (UE5 / C++)</title>
+  <meta name="description" content="خالد (WHIZZY) — مطوّر برمجيات ومحرّكات ألعاب. قرابة ست سنوات في برمجة الأنظمة بـ C/C++ مع C#/.NET. يبني محرّكات ألعاب وأدوات ومنصّات full-stack." />
+  <meta name="author" content="خالد (WHIZZY)" />
+  <meta name="theme-color" content="#14110E" />
+  <meta name="color-scheme" content="dark" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="WHIZZY — مطوّر برمجيات ومحرّكات ألعاب" />
+  <meta property="og:description" content="أبني محرّكات، وأدوات، والويب اللي حواليها. قرابة ست سنوات في C/C++، مع C#/.NET كثاني أقوى مهارة." />
+  <meta property="og:site_name" content="WHIZZY" />
+  <meta property="og:locale" content="ar_SA" />
+  <meta property="og:locale:alternate" content="en_US" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="WHIZZY — مطوّر برمجيات ومحرّكات ألعاب" />
+  <meta name="twitter:description" content="أبني محرّكات، وأدوات، والويب اللي حواليها." />
+
+  <!-- Favicon: custom W glyph, inline SVG (works offline) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2314110E'/%3E%3Cpath d='M6 9 L10 23 L16 13 L22 23 L26 9' fill='none' stroke='%23C2A878' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+
+  <!-- Fonts: Arabic (IBM Plex Sans Arabic) + Latin display/serif (Fraunces) + grotesk (Inter). Graceful offline fallback. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Enable JS-driven reveals only when JS is running; without JS, content stays visible. -->
+  <script>document.documentElement.classList.add("js");</script>
+
+  <a class="skip-link" href="#main" data-en="Skip to content" data-ar="تخطّى للمحتوى">تخطّى للمحتوى</a>
+
+  <!-- ============ HEADER / NAV ============ -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="wordmark" href="#top" aria-label="WHIZZY — home">
+        <span class="wordmark-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 22" width="26" height="18" focusable="false">
+            <path d="M2 3 L8 19 L16 8 L24 19 L30 3" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="wordmark-text">WHIZZY</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#about" data-en="About" data-ar="نبذة">نبذة</a>
+        <a href="#skills" data-en="Skills" data-ar="المهارات">المهارات</a>
+        <a href="#work" data-en="Work" data-ar="الأعمال">الأعمال</a>
+        <a href="#education" data-en="Education" data-ar="التعليم">التعليم</a>
+        <a class="nav-cta" href="#contact" data-en="Contact" data-ar="تواصل">تواصل</a>
+        <button type="button" class="lang-toggle" aria-label="Switch to English">English</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="container">
+        <!-- Title line stays in English (Latin, LTR) -->
+        <p class="hero-eyebrow reveal"><bdi>Software Developer · Game Engine Developer · UE5 / C++</bdi></p>
+
+        <h1 class="hero-heading reveal" id="hero-heading"
+            data-en="I build &lt;em&gt;engines&lt;/em&gt;, tools,&lt;br&gt; and the web around them."
+            data-ar="أبني &lt;em&gt;محرّكات&lt;/em&gt;، وأدوات،&lt;br&gt; والويب اللي حواليها.">أبني <em>محرّكات</em>، وأدوات،<br /> والويب اللي حواليها.</h1>
+
+        <p class="hero-lede reveal"
+           data-en="I'm Khalid — a systems-minded developer with roughly six years in &lt;bdi&gt;C/C++&lt;/bdi&gt;, building game engines, developer tooling, and &lt;bdi&gt;full-stack&lt;/bdi&gt; platforms with care for performance and the details that ship."
+           data-ar="أنا خالد — مطوّر يفكّر بعقلية الأنظمة، لي قرابة ست سنوات في &lt;bdi&gt;C/C++&lt;/bdi&gt;، أبني محرّكات ألعاب وأدوات تطوير ومنصّات &lt;bdi&gt;full-stack&lt;/bdi&gt;، وأعطي بالي للأداء وللتفاصيل اللي توصل للإصدار النهائي.">أنا خالد — مطوّر يفكّر بعقلية الأنظمة، لي قرابة ست سنوات في <bdi>C/C++</bdi>، أبني محرّكات ألعاب وأدوات تطوير ومنصّات <bdi>full-stack</bdi>، وأعطي بالي للأداء وللتفاصيل اللي توصل للإصدار النهائي.</p>
+
+        <div class="hero-actions reveal">
+          <a class="btn btn-primary" href="#work" data-en="Selected work" data-ar="أبرز الأعمال">أبرز الأعمال</a>
+          <a class="btn btn-ghost" href="#contact" data-en="Get in touch" data-ar="تواصل معي">تواصل معي</a>
+        </div>
+
+        <ul class="hero-stats reveal" aria-label="At a glance">
+          <li>
+            <span class="stat-num"><bdi>~6 yrs</bdi></span>
+            <span class="stat-label" data-en="C / C++ systems" data-ar="أنظمة &lt;bdi&gt;C / C++&lt;/bdi&gt;">أنظمة <bdi>C / C++</bdi></span>
+          </li>
+          <li>
+            <span class="stat-num"><bdi>UE5</bdi></span>
+            <span class="stat-label" data-en="Engine development" data-ar="تطوير المحرّكات">تطوير المحرّكات</span>
+          </li>
+          <li>
+            <span class="stat-num"><bdi>eJPTv2</bdi></span>
+            <span class="stat-label" data-en="Certified" data-ar="شهادة معتمدة">شهادة معتمدة</span>
+          </li>
+        </ul>
+      </div>
+      <span class="hero-index" aria-hidden="true">001</span>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section about" id="about" aria-labelledby="about-heading">
+      <div class="container section-grid">
+        <div class="section-aside">
+          <span class="section-index" aria-hidden="true">01</span>
+          <h2 class="section-kicker" id="about-heading" data-en="About" data-ar="نبذة">نبذة</h2>
+        </div>
+        <div class="section-body about-body">
+          <p class="lead reveal"
+             data-en="Around six years of C/C++ systems programming, with C#/.NET as a strong second. I work close to the metal — memory, rendering, and runtime behaviour — then bring that same rigor up the stack to tooling and the web."
+             data-ar="قرابة ست سنوات في برمجة الأنظمة بـ &lt;bdi&gt;C/C++&lt;/bdi&gt;، ومعها &lt;bdi&gt;C#/.NET&lt;/bdi&gt; كثاني أقوى مهارة عندي. أشتغل على مستوى منخفض قريب من العتاد — الذاكرة، والرندرة، وسلوك وقت التشغيل — وبعدها أرفع نفس الدقّة لأعلى الستاك للأدوات والويب.">قرابة ست سنوات في برمجة الأنظمة بـ <bdi>C/C++</bdi>، ومعها <bdi>C#/.NET</bdi> كثاني أقوى مهارة عندي. أشتغل على مستوى منخفض قريب من العتاد — الذاكرة، والرندرة، وسلوك وقت التشغيل — وبعدها أرفع نفس الدقّة لأعلى الستاك للأدوات والويب.</p>
+          <p class="reveal"
+             data-en="My focus is building things end to end: a game engine in Unreal Engine 5, the account and web layer that surrounds it, the launcher that delivers it, and the management tooling that keeps it healthy. I care about correctness, predictable performance, and interfaces that feel considered rather than assembled."
+             data-ar="تركيزي إني أبني الأشياء من البداية للنهاية: محرّك لعبة في &lt;bdi&gt;Unreal Engine 5&lt;/bdi&gt;، وطبقة الحسابات والويب اللي حواليه، واللانشر اللي يوصّله، وأدوات الإدارة اللي تخلّيه شغّال صح. يهمّني الصحّة، والأداء المتوقّع، والواجهات اللي تحسّها مدروسة مو مجمّعة على عجل.">تركيزي إني أبني الأشياء من البداية للنهاية: محرّك لعبة في <bdi>Unreal Engine 5</bdi>، وطبقة الحسابات والويب اللي حواليه، واللانشر اللي يوصّله، وأدوات الإدارة اللي تخلّيه شغّال صح. يهمّني الصحّة، والأداء المتوقّع، والواجهات اللي تحسّها مدروسة مو مجمّعة على عجل.</p>
+          <p class="reveal"
+             data-en="Alongside engineering, I hold an eJPTv2 certification and treat security as part of how software should be built — not an afterthought bolted on at the end."
+             data-ar="وجنب الهندسة، عندي شهادة &lt;bdi&gt;eJPTv2&lt;/bdi&gt;، وأتعامل مع الأمان كجزء من طريقة بناء البرمجيات من الأساس — مو شي ينضاف بالأخير على عجل.">وجنب الهندسة، عندي شهادة <bdi>eJPTv2</bdi>، وأتعامل مع الأمان كجزء من طريقة بناء البرمجيات من الأساس — مو شي ينضاف بالأخير على عجل.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="section skills" id="skills" aria-labelledby="skills-heading">
+      <div class="container section-grid">
+        <div class="section-aside">
+          <span class="section-index" aria-hidden="true">02</span>
+          <h2 class="section-kicker" id="skills-heading" data-en="Skills" data-ar="المهارات">المهارات</h2>
+        </div>
+        <div class="section-body">
+          <div class="skills-grid">
+            <article class="skill-group reveal">
+              <h3 data-en="Systems &amp; Languages" data-ar="الأنظمة واللغات">الأنظمة واللغات</h3>
+              <ul class="tag-list">
+                <li><bdi>C / C++</bdi></li>
+                <li><bdi>C# / .NET</bdi></li>
+                <li><bdi>WPF</bdi></li>
+                <li><bdi>MVVM</bdi></li>
+              </ul>
+            </article>
+
+            <article class="skill-group reveal">
+              <h3 data-en="Web" data-ar="الويب">الويب</h3>
+              <ul class="tag-list">
+                <li><bdi>ASP.NET Core</bdi></li>
+                <li><bdi>PHP</bdi></li>
+                <li><bdi>React</bdi></li>
+                <li><bdi>SQL Server</bdi></li>
+                <li><bdi>SignalR</bdi></li>
+              </ul>
+            </article>
+
+            <article class="skill-group reveal">
+              <h3 data-en="Security" data-ar="الأمان">الأمان</h3>
+              <ul class="tag-list">
+                <li data-en="Cybersecurity" data-ar="الأمن السيبراني">الأمن السيبراني</li>
+                <li data-en="eJPTv2 Certified" data-ar="&lt;bdi&gt;eJPTv2&lt;/bdi&gt; — معتمد"><bdi>eJPTv2</bdi> — معتمد</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SELECTED WORK ============ -->
+    <section class="section work" id="work" aria-labelledby="work-heading">
+      <div class="container section-grid">
+        <div class="section-aside">
+          <span class="section-index" aria-hidden="true">03</span>
+          <h2 class="section-kicker" id="work-heading" data-en="Selected Work" data-ar="أبرز الأعمال">أبرز الأعمال</h2>
+        </div>
+        <div class="section-body">
+          <ol class="work-list">
+
+            <li class="work-item reveal">
+              <span class="work-num" aria-hidden="true">01</span>
+              <div class="work-content">
+                <h3 class="work-title"><bdi>UE5 / C++ MMORPG Engine</bdi></h3>
+                <p class="work-desc"
+                   data-en="A faithful, from-scratch rebuild of a classic MMORPG inside Unreal Engine 5 — systems, gameplay, and networking reconstructed in C++."
+                   data-ar="إعادة بناء وفيّة من الصفر للعبة &lt;bdi&gt;MMORPG&lt;/bdi&gt; كلاسيكية داخل &lt;bdi&gt;Unreal Engine 5&lt;/bdi&gt; — الأنظمة، والجيمبلاي، والشبكات، كلها مُعاد بناؤها بـ &lt;bdi&gt;C++&lt;/bdi&gt;.">إعادة بناء وفيّة من الصفر للعبة <bdi>MMORPG</bdi> كلاسيكية داخل <bdi>Unreal Engine 5</bdi> — الأنظمة، والجيمبلاي، والشبكات، كلها مُعاد بناؤها بـ <bdi>C++</bdi>.</p>
+                <ul class="work-tags" aria-label="Technologies">
+                  <li><bdi>Unreal Engine 5</bdi></li>
+                  <li><bdi>C++</bdi></li>
+                  <li><bdi>Networking</bdi></li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="work-item reveal">
+              <span class="work-num" aria-hidden="true">02</span>
+              <div class="work-content">
+                <h3 class="work-title"><bdi>Full-Stack Game Web Platform</bdi></h3>
+                <p class="work-desc"
+                   data-en="The account and web layer that surrounds the game — built in PHP with SQL Server, handling players, sessions, and the services behind them."
+                   data-ar="طبقة الحسابات والويب اللي حوالين اللعبة — مبنية بـ &lt;bdi&gt;PHP&lt;/bdi&gt; مع &lt;bdi&gt;SQL Server&lt;/bdi&gt;، تدير اللاعبين والجلسات والخدمات اللي وراها.">طبقة الحسابات والويب اللي حوالين اللعبة — مبنية بـ <bdi>PHP</bdi> مع <bdi>SQL Server</bdi>، تدير اللاعبين والجلسات والخدمات اللي وراها.</p>
+                <ul class="work-tags" aria-label="Technologies">
+                  <li><bdi>PHP</bdi></li>
+                  <li><bdi>SQL Server</bdi></li>
+                  <li><bdi>Full-Stack</bdi></li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="work-item reveal">
+              <span class="work-num" aria-hidden="true">03</span>
+              <div class="work-content">
+                <h3 class="work-title"><bdi>Game Launcher &amp; Update System</bdi></h3>
+                <p class="work-desc"
+                   data-en="A C# / WinForms launcher with manifest-based differential updates — patching only what changed for fast, reliable client delivery."
+                   data-ar="لانشر بـ &lt;bdi&gt;C# / WinForms&lt;/bdi&gt; مع تحديثات تفاضلية معتمدة على &lt;bdi&gt;manifest&lt;/bdi&gt; — يحدّث بس اللي تغيّر عشان توصيل سريع وموثوق للكلاينت.">لانشر بـ <bdi>C# / WinForms</bdi> مع تحديثات تفاضلية معتمدة على <bdi>manifest</bdi> — يحدّث بس اللي تغيّر عشان توصيل سريع وموثوق للكلاينت.</p>
+                <ul class="work-tags" aria-label="Technologies">
+                  <li><bdi>C#</bdi></li>
+                  <li><bdi>WinForms</bdi></li>
+                  <li><bdi>Differential Updates</bdi></li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="work-item reveal">
+              <span class="work-num" aria-hidden="true">04</span>
+              <div class="work-content">
+                <h3 class="work-title"><bdi>WHIZZy Monitor</bdi></h3>
+                <p class="work-desc"
+                   data-en="A C# / .NET / WPF game management platform built on MVVM, backed by SQL Server, with credentials secured through DPAPI."
+                   data-ar="منصّة إدارة ألعاب بـ &lt;bdi&gt;C# / .NET / WPF&lt;/bdi&gt; مبنية على &lt;bdi&gt;MVVM&lt;/bdi&gt;، مدعومة بـ &lt;bdi&gt;SQL Server&lt;/bdi&gt;، مع بيانات اعتماد محمية عبر &lt;bdi&gt;DPAPI&lt;/bdi&gt;.">منصّة إدارة ألعاب بـ <bdi>C# / .NET / WPF</bdi> مبنية على <bdi>MVVM</bdi>، مدعومة بـ <bdi>SQL Server</bdi>، مع بيانات اعتماد محمية عبر <bdi>DPAPI</bdi>.</p>
+                <ul class="work-tags" aria-label="Technologies">
+                  <li><bdi>C# / .NET</bdi></li>
+                  <li><bdi>WPF · MVVM</bdi></li>
+                  <li><bdi>SQL Server</bdi></li>
+                  <li><bdi>DPAPI</bdi></li>
+                </ul>
+              </div>
+            </li>
+
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EDUCATION ============ -->
+    <section class="section education" id="education" aria-labelledby="education-heading">
+      <div class="container section-grid">
+        <div class="section-aside">
+          <span class="section-index" aria-hidden="true">04</span>
+          <h2 class="section-kicker" id="education-heading" data-en="Education" data-ar="التعليم">التعليم</h2>
+        </div>
+        <div class="section-body">
+          <div class="edu-card reveal">
+            <div class="edu-main">
+              <h3 class="edu-degree" data-en="Diploma in Networking &amp; Management" data-ar="دبلوم في الشبكات والإدارة">دبلوم في الشبكات والإدارة</h3>
+              <p class="edu-school" data-en="Shaqra University" data-ar="جامعة شقراء">جامعة شقراء</p>
+            </div>
+            <div class="edu-gpa">
+              <span class="gpa-num"><bdi>4.55<span class="gpa-den">/ 5.00</span></bdi></span>
+              <span class="gpa-label" data-en="GPA" data-ar="المعدّل">المعدّل</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section contact" id="contact" aria-labelledby="contact-heading">
+      <div class="container section-grid">
+        <div class="section-aside">
+          <span class="section-index" aria-hidden="true">05</span>
+          <h2 class="section-kicker" id="contact-heading" data-en="Contact" data-ar="تواصل">تواصل</h2>
+        </div>
+        <div class="section-body">
+          <p class="contact-lede reveal"
+             data-en="Open to roles and freelance work in engine development, systems programming, and full-stack engineering. The fastest way to reach me is below."
+             data-ar="متاح للأعمال الحرّة في تطوير المحرّكات، وبرمجة الأنظمة، والهندسة &lt;bdi&gt;full-stack&lt;/bdi&gt;. أسرع طريقة توصلني تحت.">متاح للأعمال الحرّة في تطوير المحرّكات، وبرمجة الأنظمة، والهندسة <bdi>full-stack</bdi>. أسرع طريقة توصلني تحت.</p>
+
+          <ul class="contact-list reveal">
+            <li class="contact-row">
+              <span class="contact-label" data-en="Email" data-ar="البريد">البريد</span>
+              <!-- FILL: email -->
+              <a class="contact-value" href="mailto:khalid.f.alblwi@gmail.com" dir="ltr"><bdi>khalid.f.alblwi@gmail.com</bdi></a>
+            </li>
+
+            <li class="contact-row">
+              <span class="contact-label" data-en="Phone" data-ar="الجوال">الجوال</span>
+              <!-- FILL: phone -->
+              <a class="contact-value" href="tel:+966501518107" dir="ltr"><bdi>+966 50 151 8107</bdi></a>
+            </li>
+
+            <li class="contact-row">
+              <span class="contact-label" data-en="LinkedIn" data-ar="لينكدإن">لينكدإن</span>
+              <!-- FILL: linkedin -->
+              <a class="contact-value" href="https://www.linkedin.com/in/khalid-alblwi-bb6811321/" target="_blank" rel="noopener noreferrer" dir="ltr"><bdi>linkedin.com/in/khalid-alblwi</bdi></a>
+            </li>
+
+            <li class="contact-row">
+              <span class="contact-label">GitHub</span>
+              <!-- FILL: github -->
+              <a class="contact-value" href="https://github.com/khalidfalblwi-sys" target="_blank" rel="noopener noreferrer" dir="ltr"><bdi>github.com/khalidfalblwi-sys</bdi></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="wordmark footer-wordmark" href="#top" aria-label="WHIZZY — back to top">
+        <span class="wordmark-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 22" width="22" height="15" focusable="false">
+            <path d="M2 3 L8 19 L16 8 L24 19 L30 3" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="wordmark-text">WHIZZY</span>
+      </a>
+      <p class="footer-note">
+        <span data-en="Designed &amp; built by Khalid — " data-ar="تصميم وبناء: خالد — ">تصميم وبناء: خالد — </span><bdi id="year"></bdi>
+      </p>
+      <a class="footer-totop" href="#top" data-en="Back to top ↑" data-ar="للأعلى ↑">للأعلى ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
